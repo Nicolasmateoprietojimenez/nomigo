@@ -1,0 +1,193 @@
+@font-face {
+    font-family: "nomigo";
+    src: url("../fonts/nasalization-free/nasalization-rg.otf");
+}
+@font-face {
+    font-family: "nomigo_p";
+    src: url("../fonts/Heavitas-Font/Heavitas.ttf");
+}
+* {
+    margin: auto;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, rgb(62, 0, 128), rgb(227, 25, 190), rgb(64, 209, 225));
+    
+}
+#cabecera{
+    width: 100%;
+    height: 15vh;
+    background: linear-gradient(to bottom, rgba(37, 0, 76, 0.778), rgba(37, 0, 76, 0.263), transparent);
+
+}
+#navegacion{
+
+    width: 50%;
+    height: 100%;
+}
+#ulist{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row; 
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+}
+.list a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: nomigo;
+    font-size: 2rem;
+    
+}
+#inicio{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    flex-direction: row;
+}
+
+#information{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 5%;
+}
+.redes{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: 0;
+}
+.redes img {
+    width: auto;
+    max-width: 10%;
+    margin: 0;
+    margin-right: 10%;
+    filter: invert(100);
+}
+
+#information h2{
+    color: antiquewhite;
+    font-family: nomigo_p;
+    margin: 0;
+    font-size: 3rem;
+    margin-top: 2vh;
+
+}
+#information p{
+    color: antiquewhite;
+    font-family: nomigo_p;
+    margin: 0;
+    margin-top: 2vh;
+    font-size: 1rem;
+}
+#information a {
+    font-family: nomigo_p;
+    background-color: rgb(0, 195, 255);
+    margin: 0;
+    margin-top: 5vh;
+    width: 40%;
+    height: 10vh;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    font-size: 2rem;
+}
+
+#information a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    z-index: -1;
+    border-radius: inherit;
+}
+
+#imagen-glitch {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+#imagen-glitch img {
+    width: 100%;
+    height: auto;
+    transform: translateY(-20%);
+}
+
+.stack {
+    height: 25vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    font-family: nomigo;
+    color: aliceblue;
+    margin: 0;
+  }
+  
+  .stack span {
+    text-shadow: 2px -3px 0 rgb(230, 0, 255), -2px 3px 0 rgb(0, 145, 255);
+    font-weight: bold;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    font-size: 10rem;
+    --stack-height: calc(100% / var(--stacks) - 1px);
+    --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+    --clip-top: calc(var(--stack-height) * var(--index));
+    --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+    clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+    animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch var(--glitch-duration) ease infinite var(--glitch-delay) alternate-reverse;
+  }
+  
+  .stack span:nth-child(odd) { --glitch-translate: 8px; }
+  .stack span:nth-child(even) { --glitch-translate: -8px; }
+  
+  @keyframes stack {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+      text-shadow: -5px 5px 0 rgb(255, 0, 221), 5px -5px 0 rgb(0, 145, 255); /* Ajusta los valores de desplazamiento */
+    }
+    60% {
+      opacity: 0.5;
+      transform: translateX(50%);
+    }
+    80% {
+      transform: none;
+      opacity: 1;
+      text-shadow: 2x -3px 0 rgb(230, 0, 255), -3px 5px 0 rgb(0, 145, 255); /* Ajusta los valores de desplazamiento */
+    }
+    100% {
+        text-shadow: 5px -1px 0 rgb(230, 0, 255), -3px 3px 0 rgb(0, 145, 255); /* Ajusta los valores de desplazamiento */
+
+    }
+  }
+  
+  @keyframes glitch {
+    0% {
+      text-shadow: -3px 4px 0 rgb(230, 0, 255), 3px -1px 0 rgb(0, 145, 255); /* Ajusta los valores de desplazamiento */
+      transform: translate(var(--glitch-translate));
+    }
+    2% {
+      text-shadow: 3px -5px 0 rgb(230, 0, 255), -4px 3px 0 rgb(0, 145, 255); /* Ajusta los valores de desplazamiento */
+    }
+    4%, 100% {   
+      transform: none; 
+    }
+  }
+  
+  

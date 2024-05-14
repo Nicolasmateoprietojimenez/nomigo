@@ -18,10 +18,16 @@
                 <div class="idTipoDocumento">
                     <label for="idTipoDocumento">Tipo de Documento</label>
                     <select name="idTipoDocumento" id="idTipoDocumento">
-                        <option value="1">Cédula de ciudadanía</option>
-                        <option value="2">Cédula de extranjería</option>
-                        <option value="3">Pasaporte</option>
-                        <option value="4">Registro Civil</option>
+                        <?php
+
+                        require_once '../functions/conexion.php';
+                        require_once '../functions/create_admin.php';
+
+                        $tiposDocumento = obtenerTiposDocumento($conn);
+                        foreach ($tiposDocumento as $id => $desc) {
+                            echo "<option value='$id'>$desc</option>";
+                        }
+                        ?>
                     </select>
                 </div>
                 
@@ -55,13 +61,7 @@
                     <input type="text" name="apellido2">
                 </div>
 
-                <div class="idRol">
-                    <label for="idRol">Rol</label>
-                    <select name="idRol" id="idRol">
-                        <option value="1">Administrador</option>
-                        <option value="2">Lector</option>
-                    </select>
-                </div>
+                <input type="hidden" value=1 name="idRol">
 
                 <div class="correo">
                     <label for="correo">Correo Electronico</label>
@@ -73,14 +73,13 @@
                     <input type="text" name="telefono">
                 </div>
 
-                <div class="estado">
-                    <label for="estado">Estado</label>
-                    <select name="estado" id="estado">
-                        <option value="1">Activo</option>
-                        <option value="0">Inactivo</option>
-                    </select>
-                </div>
+                <input type="hidden" value=0 name="estado">
                 
+                <div class="contrasena">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" name="contrasena">
+                </div>
+
                 <div class="cuenta">
                     <input class="boton" type="submit" value="Registrar" name="registro">
                     <a href="">Salir</a>
